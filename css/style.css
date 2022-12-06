@@ -176,9 +176,6 @@ body {
         font-size: 25px;
         color: var(--color-primary);
         background-color: transparent;
-        border: 2px solid var(--color-primary);
-        border-radius: 20px;
-        padding: 5px 10px;
     }
 
     #check:checked ~ ul{
