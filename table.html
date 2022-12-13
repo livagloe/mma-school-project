@@ -23,6 +23,7 @@
         <ul>
             <li><a class="active" href="/mma-school-project">Home</a></li>
             <li><a href="/mma-school-project/table">Search</a></li>
+            <li><a href="/mma-school-project/admin">Admin</a></li>
         </ul>
     </div>
 
@@ -166,7 +167,7 @@
         })
 
         function InsertData() {
-            set(ref(db, 'People/' + enterID.value), {
+            set(ref(db, 'People/' + enterFName.value + ' ' + enterLName.value), {
                 FirstName: enterFName.value,
                 LastName: enterLName.value,
                 ID: enterID.value,
@@ -188,7 +189,7 @@
         })
 
         function UpdateData() {
-            update(ref(db, 'People/' + enterID.value), {
+            update(ref(db, 'People/' + enterFName.value + ' ' + enterLName.value), {
                 FirstName: enterFName.value,
                 LastName: enterLName.value,
                 ID: enterID.value,

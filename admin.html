@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <!-- ========= CSS FILE ========== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/table.css" />
+</head>
+<body>
+    <!-- ========= NAVBAR ========== -->
+    <div class="menu-bar">
+        <h1 class="logo">School<span>Project</span></h1>
+
+        <input type="checkbox" id="check" />
+
+        <label for="check" class="check-btn"><i class="fas fa-bars"></i></label>
+
+        <ul>
+            <li><a class="active" href="/mma-school-project">Home</a></li>
+            <li><a href="/mma-school-project/table">Search</a></li>
+            <li><a href="/mma-school-project/admin">Admin</a></li>
+        </ul>
+    </div>
+
+    
+    
+
+    <!-- ========= TABLE RECORDS STARTS ========== -->
+    <div class="table-container">
+        <div class="report-heading">
+            <h4>Comprehensive List For Admin Only</h4>
+        </div>
+        
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Offence Date & Time</th>
+                    <th>Status</th>
+                    <th>Click Link To View More</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td data-label="ID">01</td>
+                    <td data-label="First Name">Edward</td>
+                    <td data-label="Last Name">Tony</td>
+                    <td data-label="Offence Date & Time">2022-12-13T09:37</td>
+                    <td data-label="Status"><span class="text-open">Released</span></td>
+                    <td data-label="Click Link To View More"><a href="/mma-school-project/asset/asset01" class="btn">View More</a></td>
+                </tr>
+            </tbody>
+        </table><br /><br />
+    </div>
+    <!-- ========= TABLE RECORDS ENDS ========== -->
+
+
+
+
+    <!-- ========= JS FILE ========== -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
