@@ -265,7 +265,7 @@ button{
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 5px;
-    background-color: var(--color-primary);
+    background-color: #f8c600;
     font-size: 14px;
     font-weight: normal;
     color: #fff;
