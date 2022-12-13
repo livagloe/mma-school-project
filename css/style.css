@@ -23,7 +23,7 @@
 
 body {
     position: relative;
-    background: linear-gradient(116deg, #f8c600 -15.11%, #1e1e1e 51.46%, #008207 113.99%);
+    background: linear-gradient(116deg, #f8c600 -15.11%, #fff 51.46%, #008207 113.99%);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -44,6 +44,19 @@ img{
     display: flex;
 }
 
+
+
+
+
+
+
+
+
+/*
+    //////////////////////////////
+    /////       NAV BAR     //////
+    //////////////////////////////
+*/
 .menu-bar{
     background-color: transparent;
     width: 100%;
@@ -55,7 +68,7 @@ img{
 }
 
 .logo{
-    color: var(--color-white);
+    color: #f77201;
     font-size: 25px;
 }
 
@@ -74,14 +87,14 @@ img{
 }
 
 .menu-bar ul li a{
-    color: var(--color-white);
+    color: #008207;
     font-size: 15px;
     font-weight: bold;
     transition: all 0.3s ease;
 }
 
 .menu-bar ul li a:hover{
-    color: var(--color-primary);
+    color: #f77201;
 }
 
 .dropdown-menu{
@@ -125,7 +138,7 @@ img{
     position: fixed;
     right: 0;
     z-index: 1000;
-    color: var(--color-white);
+    color: #f77201;
     font-size: 30px;
     line-height: 80px;
     margin-right: 30px;
@@ -147,6 +160,12 @@ img{
 
 
 
+/*
+    //////////////////////////////
+    /////       HERO        //////
+    //////////////////////////////
+*/
+
 .hero{
     align-items: center;
 }
@@ -163,7 +182,7 @@ img{
 .content h1{
     font-weight: 900;
     font-size: clamp(40px, 6vw, 100px);
-    color: #fff;
+    color: #008207;
     text-transform: uppercase;
     line-height: 1;
     
@@ -172,7 +191,7 @@ img{
 .content p, .content a{
     font-weight: 500;
     font-size: 24px;
-    color: #fff;
+    color: #f77201;
     padding-top: 2em;
 }
 
@@ -226,6 +245,12 @@ img{
 
 
 
+/*
+    /////////////////////////////
+    /////       MEDIA      //////
+    /////////////////////////////
+*/
+
 @media screen and (max-width:1000px){
     .hero{
         flex-wrap: wrap-reverse;
@@ -274,6 +299,7 @@ img{
 
     .menu-bar ul li a{
         font-size: 20px;
+        color: #fff;
     }
 
     .menu-bar ul li .fas{
