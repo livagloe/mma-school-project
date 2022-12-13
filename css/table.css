@@ -123,6 +123,7 @@ h1{
 }
 
 #enterDetails{
+    display: none;
     text-align: center;
     height: 100%;
     color: #008207;
