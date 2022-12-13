@@ -275,7 +275,6 @@ button{
     user-select: none;
     border-radius: 4px;
     opacity: 1;
-    cursor: pointer;
 }
 
 .table .text-open{
