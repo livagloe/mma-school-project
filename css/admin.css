@@ -299,19 +299,12 @@ button{
 */
 
 
-@media (max-width: 952px){
+@media (max-width: 1105px){
     .logo{
         font-size: 30px;
         padding-left: 20px;
     }
 
-    .menu-bar ul li a {
-        font-size: 15px;
-    }
-}
-
-
-@media (max-width: 858px){
     .check-btn{
         display: block;
     }
@@ -417,3 +410,4 @@ button{
         border: 0;
     }
 }
+
