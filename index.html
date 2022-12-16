@@ -27,8 +27,8 @@
             <li><a href="/mma-school-project/victim">Victim Form</a></li>
             <li><a href="/mma-school-project/suspect">Suspect Report</a></li>
             <li><a href="/mma-school-project/crime">Crime Report</a></li>
-            <li><a id="signoutlink" href="/mma-school-project/register"></a></li>
-            <li><a id="userlink" href="/mma-school-project/login"></a></li>
+            <li><a id="signoutlink" href="#"></a></li>
+            <li><a id="userlink" href="#"></a>username</li>
 
         </ul>
     </div>
@@ -111,8 +111,8 @@
                 signOutLink.classList.add('btn-success') */
                 signOutLink.href = '/mma-school-project/login'
             } else {
-                userLink.textContent = currentUser.user
-                header.textContent = currentUser.user + ' Welcome'
+                userLink.textContent = 'User ' + currentUser.username
+                header.textContent = currentUser.name + ' Welcome'
                 /*
                 userLink.classList.replace('nav-link', 'btn')
                 userLink.classList.remove('btn-primary') */
