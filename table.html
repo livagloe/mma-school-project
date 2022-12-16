@@ -27,15 +27,15 @@
             <li><a href="/mma-school-project/victim">Victim Form</a></li>
             <li><a href="/mma-school-project/suspect">Suspect Report</a></li>
             <li><a href="/mma-school-project/crime">Crime Report</a></li>
-            <li><a href="/mma-school-project/login">Login</a></li>
-            <li><a href="/mma-school-project/register">Register</a></li>
+            <li><a id="signoutlink" href="#"></a></li>
+            <li><a id="userlink" href="#"></a></li>
         </ul>
     </div>
 
     <div>
         <h1 class="heading">Search File</h1>
     </div>
-    
+
 
     <!-- ========= FIND DETAIL STARTS ========== -->
     <div id="findDetails">
@@ -45,14 +45,12 @@
         </div>
     </div><br /><br />
     <!-- ========= FIND DETAIL ENDS ========== -->
-
-
     <!-- ========= TABLE RECORDS STARTS ========== -->
     <div class="table-container">
         <div class="report-heading">
             <h4>RECORDS</h4>
         </div>
-        
+
 
         <table class="table">
             <thead>
@@ -79,9 +77,6 @@
         </table><br /><br />
     </div>
     <!-- ========= TABLE RECORDS ENDS ========== -->
-
-
-
     <!--
         //////////////////////////////////////////
         The EnterDetails ID display has been set
@@ -115,8 +110,6 @@
         <button id="remove">REMOVE</button><br /><br />
     </div>
     <!-- ========= ENTER DETAIL ENDS ========== -->
-
-
     <!-- ========= JS FILE ========== -->
     <script src="js/script.js"></script>
 
@@ -153,7 +146,7 @@
         let enterDateTime = document.querySelector('#enterDateTime');
         let enterStatus = document.querySelector('#enterStatus');
         let enterLink = document.querySelector('#enterLink');
-        
+
         let findAny = document.querySelector('#findAny');
 
 
@@ -258,5 +251,76 @@
                 })
         }
     </script>
+
+
+    <script>
+
+        let userLink = document.getElementById('userlink')                  //For Register
+        let signOutLink = document.getElementById('signoutlink')            //Fot Signout and Login
+        let header = document.getElementById('hh')
+        let searchPage = document.getElementById('searchInp')
+        let victimPage = document.getElementById('victimInp')
+        let suspectPage = document.getElementById('suspectInp')
+        let crimePage = document.getElementById('crimeInp')
+
+        var currentUser = null
+
+        function getUserName() {
+            let keepLoggedIn = localStorage.getItem('keepLoggedIn')
+
+            if (keepLoggedIn == 'yes') {
+                currentUser = JSON.parse(localStorage.getItem('user'))
+            } else {
+                currentUser = JSON.parse(sessionStorage.getItem('user'))
+            }
+        }
+
+
+
+        function signOut() {
+            sessionStorage.removeItem('user')
+            localStorage.removeItem('user')
+            localStorage.removeItem('keepLoggedIn')
+            window.location = '/mma-school-project'
+        }
+
+
+        window.onload = function () {
+            getUserName()
+
+            if (currentUser == null) {
+                
+                userLink.textContent = 'Register'
+                /*
+                userLink.classList.replace('nav-link', 'btn')
+                userLink.classList.add('btn-primary') */
+                userLink.href = '/mma-school-project/register'
+
+
+                signOutLink.textContent = 'Login'
+                /*
+                signOutLink.classList.replace('nav-link', 'btn')
+                signOutLink.classList.add('btn-success') */
+                signOutLink.href = '/mma-school-project/login'
+            } else {
+                /*
+                userLink.textContent = 'User ' + currentUser.username
+                header.textContent = currentUser.name + ' Welcome'
+                userLink.classList.replace('nav-link', 'btn')
+                userLink.classList.remove('btn-primary')
+                userLink.href = '#'
+                */
+
+
+                signOutLink.textContent = 'Sign Out'
+                /*
+                signOutLink.classList.replace('nav-link', 'btn')
+                signOutLink.classList.remove('btn-success') */
+                signOutLink.href = 'javascript:signOut()'
+            }
+        }
+    </script>
+
+
 </body>
 </html>
