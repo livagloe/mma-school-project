@@ -121,11 +121,11 @@
 
             if (!keepLoggedIn) {
                 sessionStorage.setItem('user', JSON.stringify(user))
-                window.location = 'index.html'
+                window.location = '/mma-school-project'
             } else {
                 localStorage.setItem('keepLoggedIn', 'yes')
                 localStorage.setItem('user', JSON.stringify(user))
-                window.location = 'index.html'
+                window.location = '/mma-school-project'
             }
         }
 
