@@ -92,6 +92,9 @@
             get(child(dbref, "UsersList/" + username.value))
                 .then((snapshot) => {
                     if (snapshot.exists()) {
+                        login(snapshot.val())
+
+                        /*
                         alert()
                         let dbpass = decryptPass(snapshot.val().password)
 
@@ -99,7 +102,7 @@
                             login(snapshot.val())
                         } else {
                             alert('User or Password is invalid')
-                        }
+                        }*/
                     } else {
                         alert('User or Password is invalid')
                     }
@@ -109,11 +112,11 @@
 
 
         /* ---------------------------------------------- DECRYPTION PROCESS ------------------------------------------------------- */
-
+        /*
         function decryptPass(dbpass) {
             var passEnc = CryptoJS.AES.decrypt(dbpass, pass.value).toString(CryptoJS.enc.Utf8)
             
-        }
+        }*/
 
 
         /* ---------------------------------------------- LOGIN ------------------------------------------------------- */

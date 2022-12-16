@@ -135,7 +135,7 @@
                                 Fullname: name.value,
                                 Email: email.value,
                                 Username: username.value,
-                                Password: encryptPass()
+                                Password: pass.value
                             })
                             .then(() => {
                                 alert("User added successfully!")
@@ -149,12 +149,13 @@
         }
 
 
-        /* ---------------------------------------------- ENCRYPTION -------------------------------------------------------------- */
 
+        /* ---------------------------------------------- ENCRYPTION -------------------------------------------------------------- */
+        /*
         function encryptPass() {
             var passEnc = CryptoJS.AES.encrypt(pass.value, pass.value)
             return passEnc.toString()
-        }
+        }*/
 
 
     </script>
