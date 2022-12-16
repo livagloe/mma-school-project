@@ -68,8 +68,8 @@
 
     <script>
 
-        let userLink = document.getElementById('userlink')
-        let signOutLink = document.getElementById('signoutlink')
+        let userLink = document.getElementById('userlink')                  //For Register
+        let signOutLink = document.getElementById('signoutlink')            //Fot Signout and Login
         let header = document.getElementById('hh')
 
         var currentUser = null
@@ -123,7 +123,7 @@
                 /*
                 signOutLink.classList.replace('nav-link', 'btn')
                 signOutLink.classList.remove('btn-success') */
-                signOutLink.href = '/mma-school-project/login'
+                signOutLink.href = 'javascript:signOut()'
             }
         }
     </script>
