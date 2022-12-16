@@ -22,11 +22,11 @@
 
         <ul>
             <li><a class="active" href="/mma-school-project">Home</a></li>
-            <li><a href="/mma-school-project/table">Search</a></li>
+            <li><a id="searchInp" class="se-pg" href="/mma-school-project/table">Search</a></li>
             <li><a href="/mma-school-project/about">About</a></li>
-            <li><a href="/mma-school-project/victim">Victim Form</a></li>
-            <li><a href="/mma-school-project/suspect">Suspect Report</a></li>
-            <li><a href="/mma-school-project/crime">Crime Report</a></li>
+            <li><a id="victimInp" class="vi-pg" href="/mma-school-project/victim">Victim Form</a></li>
+            <li><a id="suspectInp" class="su-pg" href="/mma-school-project/suspect">Suspect Report</a></li>
+            <li><a id="crimeInp" class="cr-pg" href="/mma-school-project/crime">Crime Report</a></li>
             <li><a id="signoutlink" href="#"></a></li>
             <li><a id="userlink" href="#"></a></li>
 
@@ -71,6 +71,10 @@
         let userLink = document.getElementById('userlink')                  //For Register
         let signOutLink = document.getElementById('signoutlink')            //Fot Signout and Login
         let header = document.getElementById('hh')
+        let searchPage = document.getElementById('searchInp')
+        let victimPage = document.getElementById('victimInp')
+        let suspectPage = document.getElementById('suspectInp')
+        let crimePage = document.getElementById('crimeInp')
 
         var currentUser = null
 
@@ -98,6 +102,11 @@
             getUserName()
 
             if (currentUser == null) {
+                searchPage.classList.remove('se-pg')
+                victimPage.classList.remove('vi-pg')
+                suspectPage.classList.remove('su-pg')
+                crimePage.classList.remove('cr-pg')
+
                 userLink.textContent = 'Register'
                 /*
                 userLink.classList.replace('nav-link', 'btn')
@@ -111,6 +120,11 @@
                 signOutLink.classList.add('btn-success') */
                 signOutLink.href = '/mma-school-project/login'
             } else {
+                searchPage.classList.add('se-pg')
+                victimPage.classList.add('vi-pg')
+                suspectPage.classList.add('su-pg')
+                crimePage.classList.add('cr-pg')
+
                 userLink.textContent = 'User ' + currentUser.username
                 header.textContent = currentUser.name + ' Welcome'
                 /*
