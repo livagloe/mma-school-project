@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
- 
+
     <!-- ========= LOGIN SECTION ========== -->
     <div class="mb-5">
         <h3 class="mb-3">Log In</h3>
@@ -40,12 +40,87 @@
         </ul>
     </div>
 
-    
+
 
 
 
     <!-- ========= JS FILE ========== -->
     <script src="https://kit.fontawesome.com/d7edf34ed6.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+
+    <!-- ========= FIREBASE DATABASE ========== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBAgXDustMk8-flFezdkMc46X6AfksosVw",
+            authDomain: "viddemologin.firebaseapp.com",
+            databaseURL: "https://viddemologin-default-rtdb.firebaseio.com",
+            projectId: "viddemologin",
+            storageBucket: "viddemologin.appspot.com",
+            messagingSenderId: "267099430747",
+            appId: "1:267099430747:web:19f0d39651972bd6f2447e"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+        const db = getDatabase()
+
+
+        /* ---------------------------------------------- REFERENCES -------------------------------------------------------------- */
+
+        const username = document.getElementById('userInp')
+        const pass = document.getElementById('passInp')
+        const submit = document.getElementById('sub_btn')
+
+        /* ---------------------------------------------- AUTHENTICATION -------------------------------------------------------------- */
+
+        function authenticateUser() {
+            const dbref = ref(db)
+
+            get(child(dbref, "UsersList/" + username.value))
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        let dbpass = decryptPass(snapshot.val().password)
+
+                        if (dbpass == pass.value) {
+                            login(snapshot.val())
+                        } else {
+                            alert('User does not exist')
+                        }
+                    } else {
+                        alert('User or Password is invalid')
+                    }
+                })
+        }
+
+
+
+        /* ---------------------------------------------- DECRYPTION PROCESS ------------------------------------------------------- */
+
+        function decryptPass(dbpass) {
+            let passEnc = CryptoJS.AES.decrypt(dbpass, pass.value)
+            return passEnc.toString(CryptoJS.enc.Utf8)
+        }
+
+
+        /* ---------------------------------------------- LOGIN ------------------------------------------------------- */
+        function login(user) {
+            let keepLoggedIn = document.getElementById('customSwitch1').checked
+
+            if (!keepLoggedIn) {
+                sessionStorage.setItem('user', JSON.stringify(user))
+                window.location = 'index.html'
+            } else {
+                localStorage.setItem('keepLoggedIn', 'yes')
+                localStorage.setItem('user', JSON.stringify(user))
+                window.location = 'index.html'
+            }
+        }
+
+
+    </script>
 </body>
 </html>

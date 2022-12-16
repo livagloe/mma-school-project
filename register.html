@@ -64,7 +64,7 @@
         const db = getDatabase()
 
 
-        /* ---------------------------------------------- DECLARATION -------------------------------------------------------------- */
+        /* ---------------------------------------------- REFFERENCES -------------------------------------------------------------- */
 
         const name = document.getElementById('nameInp')
         const email = document.getElementById('emailInp')
@@ -155,15 +155,6 @@
             let passEnc = CryptoJS.AES.encrypt(pass.value, pass.value)
             return passEnc.toString()
         }
-
-
-
-
-
-
-
-
-
 
 
     </script>
