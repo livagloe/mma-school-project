@@ -27,8 +27,9 @@
             <li><a href="/mma-school-project/victim">Victim Form</a></li>
             <li><a href="/mma-school-project/suspect">Suspect Report</a></li>
             <li><a href="/mma-school-project/crime">Crime Report</a></li>
-            <li><a href="/mma-school-project/login">Login</a></li>
-            <li><a href="/mma-school-project/register">Register</a></li>
+            <li><a id="signoutlink" href="/mma-school-project/register">Sign Out</a></li>
+            <li><a id="userlink" href="/mma-school-project/login">Username</a></li>
+
         </ul>
     </div>
 
@@ -36,6 +37,7 @@
     <!-- ========= HERO SECTION ========== -->
     <section class="container hero row">
         <div class="content">
+            <h1 id="hh"></h1>
             <h1>Crime Record System</h1>
             <a href="/mma-school-project/table">
                 Click To Search File >> <i class="fas fa-folder"></i>
@@ -62,5 +64,68 @@
     <!-- ========= JS FILE ========== -->
     <script src="https://kit.fontawesome.com/d7edf34ed6.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+
+
+    <script>
+        let userLink = document.getElementById('userlink')
+        let signOutLink = document.getElementById('signoutlink')
+        let header = document.getElementById('hh')
+
+        var currentUser = null
+
+        function getUserName() {
+            let keepLoggedIn = localStorage.getItem('keepLoggedIn')
+
+            if (keepLoggedIn == 'yes') {
+                currentUser = JSON.parse(localStorage.getItem('user'))
+            } else {
+                currentUser = JSON.parse(sessionStorage.getItem('user'))
+            }
+        }
+
+
+
+        function signOut() {
+            sessionStorage.removeItem('user')
+            localStorage.removeItem('user')
+            localStorage.removeItem('keepLoggedIn')
+            window.location = 'index.html'
+        }
+
+
+        window.onload = function () {
+            getUserName()
+
+            if (currentUser == null) {
+                userLink.textContent = 'Register'
+                /*
+                userLink.classList.replace('nav-link', 'btn')
+                userLink.classList.add('btn-primary') */
+                userLink.href = 'register.html'
+
+
+                signOut.textContent = 'Login'
+                /*
+                signOut.classList.replace('nav-link', 'btn')
+                signOut.classList.add('btn-success') */
+                signOut.href = 'login.html'
+            } else {
+                userLink.textContent = currentUser.username
+                header.textContent = 'Welcome' + currentUser.fullname
+                /*
+                userLink.classList.replace('nav-link', 'btn')
+                userLink.classList.remove('btn-primary') */
+                userLink.href = '#'
+
+
+                signOut.textContent = 'Sign Out'
+                /*
+                signOut.classList.replace('nav-link', 'btn')
+                signOut.classList.remove('btn-success') */
+                signOut.href = 'javascript:Signout()'
+            }
+        }
+    </script>
+
 </body>
 </html>

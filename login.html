@@ -75,6 +75,15 @@
         const pass = document.getElementById('passInp')
         const submit = document.getElementById('sub_btn')
 
+
+        /* ------------------------------------------ ASSIGN EVENTS ---------------------------------------------------- */
+
+        submit.addEventListener('click', () => {
+            authenticateUser()
+        })
+
+
+
         /* ---------------------------------------------- AUTHENTICATION -------------------------------------------------------------- */
 
         function authenticateUser() {
