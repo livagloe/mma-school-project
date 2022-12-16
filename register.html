@@ -152,7 +152,7 @@
         /* ---------------------------------------------- ENCRYPTION -------------------------------------------------------------- */
 
         function encryptPass() {
-            let passEnc = CryptoJS.AES.encrypt(pass.value, pass.value)
+            var passEnc = CryptoJS.AES.encrypt(pass.value, pass.value)
             return passEnc.toString()
         }
 

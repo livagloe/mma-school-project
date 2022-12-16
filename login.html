@@ -110,7 +110,7 @@
         /* ---------------------------------------------- DECRYPTION PROCESS ------------------------------------------------------- */
 
         function decryptPass(dbpass) {
-            let passEnc = CryptoJS.AES.decrypt(dbpass, pass.value)
+            var passEnc = CryptoJS.AES.decrypt(dbpass, pass.value)
             return passEnc.toString(CryptoJS.enc.Utf8)
         }
 
