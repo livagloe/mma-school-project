@@ -102,10 +102,17 @@
             getUserName()
 
             if (currentUser == null) {
-                searchPage.classList.remove('se-pg')
-                victimPage.classList.remove('vi-pg')
-                suspectPage.classList.remove('su-pg')
-                crimePage.classList.remove('cr-pg')
+                searchPage.textContent = ' '
+                searchPage.href = '#'
+
+                victimPage.textContent = ' '
+                victimPage.href = '#'
+
+                suspectPage.textContent = ' '
+                suspectPage.href = '#'
+
+                crimePage.textContent = ' '
+                crimePage.href = '#'
 
                 userLink.textContent = 'Register'
                 /*
@@ -120,11 +127,6 @@
                 signOutLink.classList.add('btn-success') */
                 signOutLink.href = '/mma-school-project/login'
             } else {
-                searchPage.classList.add('se-pg')
-                victimPage.classList.add('vi-pg')
-                suspectPage.classList.add('su-pg')
-                crimePage.classList.add('cr-pg')
-
                 userLink.textContent = 'User ' + currentUser.username
                 header.textContent = currentUser.name + ' Welcome'
                 /*
