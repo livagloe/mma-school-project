@@ -92,12 +92,13 @@
             get(child(dbref, "UsersList/" + username.value))
                 .then((snapshot) => {
                     if (snapshot.exists()) {
+                        alert()
                         let dbpass = decryptPass(snapshot.val().password)
 
                         if (dbpass == pass.value) {
                             login(snapshot.val())
                         } else {
-                            alert('User does not exist')
+                            alert('User or Password is invalid')
                         }
                     } else {
                         alert('User or Password is invalid')
