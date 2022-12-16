@@ -289,7 +289,18 @@
             getUserName()
 
             if (currentUser == null) {
-                
+                searchPage.textContent = ' '
+                searchPage.href = '#'
+
+                victimPage.textContent = ' '
+                victimPage.href = '#'
+
+                suspectPage.textContent = ' '
+                suspectPage.href = '#'
+
+                crimePage.textContent = ' '
+                crimePage.href = '#'
+
                 userLink.textContent = 'Register'
                 /*
                 userLink.classList.replace('nav-link', 'btn')
