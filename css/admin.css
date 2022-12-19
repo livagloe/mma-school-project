@@ -129,6 +129,13 @@ h1{
     padding: 10px;
 }
 
+.enterSta{
+    padding: 5px;
+    margin: 10px 0;
+    width: 100%;
+    height: 200px;
+}
+
 #findDetails{
     display: flex;
     text-align: center;
@@ -144,7 +151,8 @@ h1{
 }
 
 input {
-    padding: 5px 0;
+    width: 100%;
+    padding: 5px;
     margin: 10px 0;
 }
 
@@ -156,6 +164,7 @@ button{
     color: #1d1d1d;
     font-weight: 700;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
 
