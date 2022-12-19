@@ -36,15 +36,181 @@
         <h1 class="heading">Crime Information Report</h1>
     </div>
 
+    <!-- ========= ENTER DETAIL STARTS ========== -->
+    <div id="enterDetails">
+        <h1>Enter Details</h1>
+        <h4>ID</h4>
+        <input id="enterID" type="text" />
+
+        <h4>First Name</h4>
+        <input id="enterFName" type="text" />
+
+        <h4>Last Name</h4>
+        <input id="enterLName" type="text" />
+
+        <h4>Offence Date & Time</h4>
+        <input id="enterDateTime" type="datetime-local" />
+
+        <h4>Status</h4>
+        <input id="enterStatus" type="text" />
+
+        <h4>Url Link</h4>
+        <input id="enterLink" type="url" /><br /><br />
+
+
+        <button id="insert">INSERT</button>
+        <button id="update">UPDATE</button>
+        <button id="remove">REMOVE</button><br /><br />
+    </div>
+    <!-- ========= ENTER DETAIL ENDS ========== -->
+
     <!-- ========= JS FILE ========== -->
-    <script src="https://kit.fontawesome.com/d7edf34ed6.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 
 
+    <!-- ========= FIREBASE FORM DATABASE JS ========== -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDYoQXohB1NtmfK4UtdHGaNGEIgRlXRhk",
+            authDomain: "videodemo-73edb.firebaseapp.com",
+            databaseURL: "https://videodemo-73edb-default-rtdb.firebaseio.com",
+            projectId: "videodemo-73edb",
+            storageBucket: "videodemo-73edb.appspot.com",
+            messagingSenderId: "30221100685",
+            appId: "1:30221100685:web:c6cf311e616627cbcb24c4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+        const db = getDatabase();
+
+        // INPUT
+        let enterID = document.querySelector('#enterID');
+        let enterFName = document.querySelector('#enterFName');
+        let enterLName = document.querySelector('#enterLName');
+        let enterDateTime = document.querySelector('#enterDateTime');
+        let enterStatus = document.querySelector('#enterStatus');
+        let enterLink = document.querySelector('#enterLink');
+
+        let findAny = document.querySelector('#findAny');
+
+
+        // TABLE
+        let userID = document.querySelector('#userId');
+        let firstName = document.querySelector('#firstName');
+        let lastName = document.querySelector('#lastName');
+        let offenceDateTime = document.querySelector('#offenceDateTime');
+        let status = document.querySelector('#status');
+        let link = document.querySelector('#link');
+
+
+        // BUTTONS
+        let insertBtn = document.querySelector('#insert');
+        let updateBtn = document.querySelector('#update');
+        let removeBtn = document.querySelector('#remove');
+
+        let findBtn = document.querySelector('#find');
+
+
+        insertBtn.addEventListener('click', () => {
+            InsertData();
+        })
+
+        function InsertData() {
+            set(ref(db, 'People/' + enterFName.value + ' ' + enterLName.value), {
+                FirstName: enterFName.value,
+                LastName: enterLName.value,
+                ID: enterID.value,
+                DateTime: enterDateTime.value,
+                Status: enterStatus.value,
+                Url: enterLink.value
+            })
+                .then(() => {
+                    alert('Data added successfully!')
+                })
+                .catch((error) => {
+                    alert(error)
+                })
+        }
+
+
+        updateBtn.addEventListener('click', () => {
+            UpdateData();
+        })
+
+        function UpdateData() {
+            update(ref(db, 'People/' + enterFName.value + ' ' + enterLName.value), {
+                FirstName: enterFName.value,
+                LastName: enterLName.value,
+                ID: enterID.value,
+                DateTime: enterDateTime.value,
+                Status: enterStatus.value,
+                Url: enterLink.value
+            })
+                .then(() => {
+                    alert('Data updated successfully!')
+                })
+                .catch((error) => {
+                    alert(error)
+                })
+        }
+
+
+        removeBtn.addEventListener('click', () => {
+            RemoveData();
+        })
+
+        function RemoveData() {
+            remove(ref(db, 'People/' + enterID.value))
+                .then(() => {
+                    alert('Data removed successfully!')
+                })
+                .catch((error) => {
+                    alert(error)
+                })
+        }
+
+
+        findBtn.addEventListener('click', () => {
+            FindData();
+        })
+
+        function FindData() {
+            const dbref = ref(db)
+
+            get(child(dbref, 'People/' + findAny.value))
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        userID.innerHTML = snapshot.val().ID;
+                        firstName.innerHTML = snapshot.val().FirstName;
+                        lastName.innerHTML = snapshot.val().LastName;
+                        offenceDateTime.innerHTML = snapshot.val().DateTime;
+                        status.innerHTML = snapshot.val().Status;
+                        link.innerHTML = snapshot.val().Url;
+                    } else {
+                        alert('No data found')
+                    }
+                })
+                .catch((error) => {
+                    alert(error)
+                })
+        }
+    </script>
+
+    <!-- ========= FIREBASE LOGIN AND SIGNOUT JS ========== -->
     <script>
 
         let userLink = document.getElementById('userlink')                  //For Register
-        let signOutLink = document.getElementById('signoutlink')            //Fot Signout and Login
+        let signOutLink = document.getElementById('signoutlink')            //For Signout and Login
         let header = document.getElementById('hh')
         let searchPage = document.getElementById('searchInp')
         let victimPage = document.getElementById('victimInp')
