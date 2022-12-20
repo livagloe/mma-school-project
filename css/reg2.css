@@ -1,0 +1,40 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+}
+
+.inp {
+    margin: 10px 0;
+}
+
+.wid-len {
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+ul li {
+    list-style: none;
+    text-decoration: none;
+}
+
+.heading {
+    font-size: 40px;
+    text-align: center;
+    color: #008207;
+    margin-bottom: 40px;
+    margin-top: 100px;
+}
+
+#admin-style{
+    background-color: #ff6a00;
+}
+
+#head-col{
+    color: #ff6a00;
+}

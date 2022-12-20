@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
+    <title>Admin Login Page</title>
 
     <!-- ========= CSS FILE ========== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/reg.css" />
+    <link rel="stylesheet" href="css/reg2.css" />
 
     <!-- ========= BBOTSTRAP CSS FILE ========== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
@@ -21,7 +21,7 @@
 
     <!-- ========= LOGIN SECTION ========== -->
     <div class="mb-5">
-        <h3 class="mb-3">Log In</h3>
+        <h3 id="head-col" class="mb-3">Official Page</h3>
 
         <input type="text" placeholder="Username" id="userInp" class="form-control inp mb-3" />
         <input type="password" placeholder="Password" id="passInp" class="form-control inp mb-3" />
@@ -32,12 +32,7 @@
         </div>
 
         <button type="submit" id="sub_btn" class="btn wid-len btn-outline-primary mb-3">Log In</button>
-        <a href="/mma-school-project/register.html" class="badge badge-secondary py-1 wid-len">Want to Create A New Account?</a>
-
-        <ul>
-            <li><a class="active" href="/mma-school-project">Return Home</a></li>
-            <li><a class="active" href="/mma-school-project/admin-login">GoTo Admin Page</a></li>
-        </ul>
+        <a href="/mma-school-project" id="admin-style" class="badge badge-secondary py-1 wid-len">Return Home</a>
     </div>
 
 
@@ -45,7 +40,6 @@
 
 
     <!-- ========= JS FILE ========== -->
-    <script src="https://kit.fontawesome.com/d7edf34ed6.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 
     <!-- ========= FIREBASE DATABASE ========== -->
@@ -53,15 +47,16 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyBAgXDustMk8-flFezdkMc46X6AfksosVw",
-            authDomain: "viddemologin.firebaseapp.com",
-            databaseURL: "https://viddemologin-default-rtdb.firebaseio.com",
-            projectId: "viddemologin",
-            storageBucket: "viddemologin.appspot.com",
-            messagingSenderId: "267099430747",
-            appId: "1:267099430747:web:19f0d39651972bd6f2447e"
+            apiKey: "AIzaSyDqU-VV4KQHngG5nWL36iKfrlCIZqaLgaA",
+            authDomain: "adminbase-8336f.firebaseapp.com",
+            databaseURL: "https://adminbase-8336f-default-rtdb.firebaseio.com",
+            projectId: "adminbase-8336f",
+            storageBucket: "adminbase-8336f.appspot.com",
+            messagingSenderId: "439752131351",
+            appId: "1:439752131351:web:dc0fc6ba8f77edd332ad52"
         };
 
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
 
         import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
@@ -93,31 +88,11 @@
                 .then((snapshot) => {
                     if (snapshot.exists()) {
                         login(snapshot.val())
-
-                        /*
-                        alert()
-                        let dbpass = decryptPass(snapshot.val().password)
-
-                        if (dbpass == pass.value) {
-                            login(snapshot.val())
-                        } else {
-                            alert('User or Password is invalid')
-                        }*/
                     } else {
                         alert('User or Password is invalid')
                     }
                 })
         }
-
-
-
-        /* ---------------------------------------------- DECRYPTION PROCESS ------------------------------------------------------- */
-        /*
-        function decryptPass(dbpass) {
-            var passEnc = CryptoJS.AES.decrypt(dbpass, pass.value)
-            return passEnc.toString(CryptoJS.enc.Utf8)
-            
-        }*/
 
 
         /* ---------------------------------------------- LOGIN ------------------------------------------------------- */
@@ -126,11 +101,11 @@
 
             if (!keepLoggedIn) {
                 sessionStorage.setItem('user', JSON.stringify(user))
-                window.location = '/mma-school-project'
+                window.location = '/mma-school-project/admin'
             } else {
                 localStorage.setItem('keepLoggedIn', 'yes')
                 localStorage.setItem('user', JSON.stringify(user))
-                window.location = '/mma-school-project'
+                window.location = '/mma-school-project/admin'
             }
         }
 
