@@ -310,12 +310,18 @@ button{
 }
 
 .about-content{
-    padding: 30px 100px;
+    padding: 30px 50px;
 }
 
 #about-id{
-    padding: 20px 0;
-    border-radius: 60px;
+    width: 100%;
+    padding: 20px 100px;
+}
+
+#about-id2{
+    width: 100%;
+    padding: 20px 70px;
+    border-radius: 300px;
 }
 
 span{
